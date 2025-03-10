@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Pendaftaran</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #statusMessage {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .data-container {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+            padding: 10px;
+            background: #e9f7ef;
+            border-radius: 5px;
+        }
+
+        .data-container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .data-container ul li {
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Cek Status Pendaftaran</h2>
+        <input type="text" id="nisn" placeholder="Masukkan NISN atau Kode Unik">
+        <button onclick="cekStatus()">Cek Status</button>
+        <p id="statusMessage"></p>
+
+        <!-- Kontainer untuk menampilkan data pendaftaran -->
+        <div id="dataContainer" class="data-container">
+            <h3>Detail Pendaftaran</h3>
+            <ul id="dataList"></ul>
+        </div>
+    </div>
+
+    <script>
+        function cekStatus() {
+            const nisn = document.getElementById('nisn').value.trim();
+            const storedData = JSON.parse(localStorage.getItem('formPendaftaran'));
+
+            const statusMessage = document.getElementById('statusMessage');
+            const dataContainer = document.getElementById('dataContainer');
+            const dataList = document.getElementById('dataList');
+
+            if (!nisn) {
+                statusMessage.innerText = "❌ Masukkan NISN terlebih dahulu!";
+                dataContainer.style.display = "none";
+                return;
+            }
+
+            if (storedData && storedData.nisn === nisn) {
+                statusMessage.innerText = "✅ Status: Pendaftaran Diterima.";
+
+                // Menampilkan data pendaftaran
+                dataList.innerHTML = `
+                    <li><strong>Nama:</strong> ${storedData.nama}</li>
+                    <li><strong>NISN:</strong> ${storedData.nisn}</li>
+                    <li><strong>Tempat, Tanggal Lahir:</strong> ${storedData.ttl}</li>
+                    <li><strong>Nama Orang Tua/Wali:</strong> ${storedData.orangtua}</li>
+                    <li><strong>Nomor HP:</strong> ${storedData.kontak}</li>
+                    <li><strong>Pilihan Kelas:</strong> ${storedData.kelas}</li>
+                `;
+                dataContainer.style.display = "block";
+            } else {
+                statusMessage.innerText = "❌ Status: Data tidak ditemukan. Pastikan NISN benar.";
+                dataContainer.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

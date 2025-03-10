@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD Negeri wame</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        nav {
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4058LODlnaXMhtQd-Tqt76oFFuiCKJDf7Ig&s') no-repeat center center/cover;
+            color: rgb(48, 44, 44);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #FF9800;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .profil {
+            padding: 20px;
+            text-align: center;
+            background: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .visi-misi {
+            padding: 20px;
+            background: white;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .visi-misi h3 {
+            color: #4CAF50;
+        }
+
+        .visi-misi ul {
+            padding-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                background: #0818fc;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <script>
+        function toggleMenu() {
+            document.querySelector('nav ul').classList.toggle('active');
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <img src="logo.png" alt="Logo SD Negeri Wame" class="logo">
+
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tetangkami.html">Tentang Kami</a></li>
+                <li><a href="program.html">Program & Kurikulum</a></li>
+                <li><a href="berita.html">Berita & Pengumuman</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+                <li><a href="daftar1.html">Pendaftaran</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Membangun Generasi Berkualitas</h2>
+        <p>Visi, Misi, dan Nilai sekolah kami.</p>
+        <a href="daftar.html" class="cta-button">Daftar Sekarang</a>
+    </section>
+
+    <section class="visi-misi">
+        <h3>🏠 Beranda</h3>
+        <h3>👤 Visi</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim sunt, necessitatibus cumque qui excepturi
+            perspiciatis illum.</p>
+        <h3>👤 Misi</h3>
+        <ul>
+            <li>🔖 Meningkatkan Solidaritas</li>
+            <li>🔖 Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>🔖 Quia voluptatibus sapiente nihil deleniti voluptatem quod culpa consectetur.</li>
+            <li>🔖 Impedit, blanditiis fugit ea vero quo consequatur qui sit similique.</li>
+            <li>🔖 Partisipasi dan Kolaborasi</li>
+            <li>🔖 Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 SD Swasta. Semua Hak Dilindungi.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pendaftaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+            text-align: left;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        @media print {
+            button {
+                display: none;
+                /* Sembunyikan tombol saat cetak */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="dataCetak">
+        <h2>Konfirmasi Pendaftaran</h2>
+        <p><strong>Nama:</strong> <span id="konfNama"></span></p>
+        <p><strong>NISN:</strong> <span id="konfNisn"></span></p>
+        <p><strong>TTL:</strong> <span id="konfTtl"></span></p>
+        <p><strong>Orang Tua/Wali:</strong> <span id="konfOrangtua"></span></p>
+        <p><strong>Kontak:</strong> <span id="konfKontak"></span></p>
+        <p><strong>Pilihan Kelas:</strong> <span id="konfKelas"></span></p>
+
+        <button onclick="kembaliKeForm()">Edit Data</button>
+        <button onclick="kirimFinal()">Konfirmasi & Kirim</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const data = JSON.parse(localStorage.getItem('formPendaftaran'));
+            if (data) {
+                document.getElementById('konfNama').innerText = data.nama;
+                document.getElementById('konfNisn').innerText = data.nisn;
+                document.getElementById('konfTtl').innerText = data.ttl;
+                document.getElementById('konfOrangtua').innerText = data.orangtua;
+                document.getElementById('konfKontak').innerText = data.kontak;
+                document.getElementById('konfKelas').innerText = data.kelas;
+            } else {
+                alert("Data tidak ditemukan, silakan isi formulir pendaftaran terlebih dahulu.");
+                window.location.href = "index.html";
+            }
+        });
+
+        function kembaliKeForm() {
+            window.location.href = "index.html";
+        }
+
+        function kirimFinal() {
+            alert("Pendaftaran telah dikonfirmasi dan dikirim.");
+            window.print(); // Cetak otomatis
+            localStorage.removeItem('formPendaftaran'); // Hapus data setelah cetak
+            window.location.href = "index.html"; // Kembali ke halaman utama
+        }
+    </script>
+
+</body>
+
+</html>
